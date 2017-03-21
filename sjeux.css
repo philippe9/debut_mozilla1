@@ -1,0 +1,52 @@
+ #container {
+ width: 105%;
+ height: 200px;
+ position: relative;
+ background: none;
+display:inline-block;
+margin:auto;
+
+
+}
+.animate {
+ width: 9%;
+ height: 50px;
+ position: relative;
+ text-shadow: gray;
+ font-size: 1.2em;
+ text-align: center;
+ background-color: white;
+ display:inline-block;
+ border: solid 1px;
+ margin-left:3px ;
+ padding-top: 4px;
+ border-radius: 100px;
+}
+#stop
+{
+border-top:solid 1px ;
+width: 100%;
+display:block;
+margin-top:340px; 
+}
+#saisie{
+	z-index:100;
+	position: absolute;
+	   top:550px;
+	   bottom:0px;
+	   left: 10px;
+	}
+
+#go
+{
+position: absolute;
+	   top:570px;
+	   bottom:0px;
+}
+
+#go1
+{
+position: absolute;
+	   top:600px;
+	   bottom:0px;
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>One word</title>
+	<link rel="stylesheet" href="sjeux.css">
+</head>
+<body  onload="myMove()">
+	
+	<div id ="container">
+		<div id ="animate1" class="animate">mother</div>
+		<div id ="animate2" class="animate">bonjour</div>
+		<div id ="animate3" class="animate">conversion</div>
+		<div id ="animate4" class="animate">pulverise</div>
+		<div id ="animate5" class="animate">romain</div>
+		<div id ="animate6" class="animate">goul</div>
+		<div id ="animate7" class="animate">nerveux</div>
+		<div id ="animate8" class="animate">imperatif</div>
+		<div id ="animate9" class="animate">croisement</div>
+		<div id ="animate10" class="animate">commisaire</div>
+	</div>
+	
+	<div id="stop">
+
+	<input type="text" name="saisie" id="saisie" autofocus/>
+</div>
+<audio id="audioPlayer">
+
+    
+     <source src="2.mp3">
+    <source src="3.mp3">
+
+</audio>
+
+	<p id="go">
+	 
+	</p>
+	<p id="go1">
+	 
+	</p>
+	
+<script type="text/javascript">
+// c'est Steve qui parle ici
+var steve="";
+          var animate1 = document.getElementById("animate1");
+		  var animate2 = document.getElementById("animate2");
+		  var animate3 = document.getElementById("animate3");
+		  var animate4 = document.getElementById("animate4");
+		  var animate5 = document.getElementById("animate5");
+		  var animate6 = document.getElementById("animate6");
+		  var animate7 = document.getElementById("animate7");
+		  var animate8 = document.getElementById("animate8");
+		  var animate9 = document.getElementById("animate9");
+		  var animate10 = document.getElementById("animate10");
+		 
+		 var pos=[30,50,20,10,0,20,80,40,10,100];
+		 var posL=[0,3,1,4,6,9,2,5,7,8]
+var go= document.getElementById ('go');
+var go1= document.getElementById ('go1');
+var saisie= document.getElementById ('saisie');
+var player = document.querySelector('#audioPlayer');
+var tableauElement = ["mother","bonjour","conversion","pulverise","romain","goul","nerveux","imperatif","croisement","commisaire","olfactif","demontage","vanne","falloir","console","guernesey","syndicalisme","oxydation","pacification","paprica","photometre","tambourinage","mongole","guignole","sifflement","consolateur","cassonade","cendrillon","souriceau","transformateur","traitable","diablement","guano","trouillard","troufion"];
+var tableid=[""];
+var s="",i=0,fail=0,x=0,score=0,exit=0,l=0,test="",o=0,r=0,time=1000;
+ 
+//player.play();
+ intab(); 
+ affichagerand();
+onebyone(o);
+ 
+function onebyone(o){
+	if(o<10){
+tableid[posL[o]].style.visibility='visible';
+//alert(tableid[o].innerHTML);
+o++;
+ setTimeout(onebyone,time,o);
+ }
+
+}
+ 
+                                   
+ 
+ 
+addEvent(document,'keypress',recup);
+
+function addEvent(el,ev,func){
+	if(addEventListener){
+		el.addEventListener(ev,func,false);
+	}
+	else{
+		el.attachEvent('on'+ ev,func);
+	}
+}
+
+function getext(){
+var j=0;
+j=Math.floor(Math.random() * 35);
+	s=saisie.value;
+	document.getElementById("go").innerHTML=s;
+	for(i=0;i<10;i++)
+                        {
+                              if(s==tableid[i].innerHTML)
+                                {
+                                    j=Math.floor(Math.random() * 100);
+                                   pos[i]=j;
+
+                                     setTimeout(refill(),1);
+                                   
+                                    saisie.value ="";
+
+                                      
+                                }
+                                                       
+                        }
+}
+
+/***********************************************************function*******************************/
+
+function recup(e)
+    {
+	     
+	       setTimeout(getext,100);
+	       	       
+	}
+
+/*****************************end******************************function*******************************/
+
+
+
+
+
+/***********************************************************function*******************************/
+ 
+		function myMove() {
+		 
+		 
+		  var id = setInterval(frame, 100);
+		  function frame() {
+		  	for(x=0;x<10;x++)
+		  	{
+		  		if(pos[x]==480){
+
+      
+                 		fail++;
+                 		l=Math.floor(Math.random() * 10);
+                                   pos[x]=l;
+                 		refill();
+                 	
+                }	 
+                     
+		  		else{
+		  			pos[x]++;
+		  			tableid[x].style.top=pos[x] + 'px';
+		  		}
+		  	}
+		  	if(fail>5)
+                {
+                	alert("RENTRE CHEZ TOI LE JEUX EST FINI");
+                }
+		   
+// 		      elem.style.left = pos + 'px';
+		    }
+		  
+		  
+		}
+	
+		/**************************end*********************************function*******************************/
+
+
+
+		/***********************************************************function*******************************/
+     function affichagerand()
+		{
+	               var a=0,indice=[],j=1,k=0,out=false;
+	               var aux;
+				   var acd;
+				   a=Math.floor(Math.random() * 35);
+				   indice[0]=a;
+				   while(out==false)
+				   {
+				   	
+				   	       var increment=true;
+				             	for(var t=0;t<indice.length;t++)
+				             	{
+				             		if(indice[t]==a)
+				             		{
+				             		 a=Math.floor(Math.random() * 35);
+				             		 increment=false;	
+				             		}
+                                }
+                                if (increment==true) {
+                                	indice[j]=a;
+                                	j++;
+                                }
+                                if(j==10){
+                                	out=true;
+                                }
+
+				   	}
+				   	             for(r=0;r<10;r++)
+				   	             {
+				   	             	tableid[r].innerHTML=tableauElement[indice[r]];
+				   	             	tableid[r].style.visibility='hidden';
+
+				   	             }
+				   			
+				   			
+				   	
+				          
+		}
+
+		/******************************end*****************************function*******************************/
+
+
+
+	
+      function refill()
+      {  
+             var f=0,h=0;
+             h=Math.floor(Math.random() * 35);
+              test=tableauElement[h];
+                 for(f=0;f<10;f++)
+                 {
+                 	if(test==tableid[f].innerHTML)
+                 	{
+                 		h=Math.floor(Math.random() * 35);
+                 		test=tableauElement[h];
+                 	}
+                 }
+                 tableid[i].innerHTML=test;
+                 score=score+1;
+                 document.getElementById("go1").innerHTML=score;
+
+          
+       }
+             
+      
+
+
+		/***********************************************************function*******************************/
+		
+		function intab()
+		{
+		              var j=1;
+		        for(i=0;i<10;i++)
+		          {	
+		                  tableid[i]=document.getElementById("animate"+j);
+		                  j++;
+		          }
+		                  
+		}
+		/************************************end***********************function*******************************/
+		
+		
+	</script>
+
+</body>
+</html>
